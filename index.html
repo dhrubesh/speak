@@ -4,35 +4,6 @@
   <meta charset="UTF-8">
   <title>Speech Detection</title>
 </head>
-<body>
-
-  <div class="words" contenteditable>
-  </div>
-
-<script>
-  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
-  let p = document.createElement('p');
-  const words = document.querySelector('.words');
-  words.appendChild(p);
-  recognition.addEventListener('result', e => {
-    const transcript = Array.from(e.results)
-      .map(result => result[0])
-      .map(result => result.transcript)
-      .join('');
-      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
-      p.textContent = poopScript;
-      if (e.results[0].isFinal) {
-        p = document.createElement('p');
-        words.appendChild(p);
-      }
-  });
-  recognition.addEventListener('end', recognition.start);
-  recognition.start();
-</script>
-
-
   <style>
     html {
       font-size: 10px;
@@ -68,7 +39,45 @@
       border: 1px solid;
       border-color: transparent #efe4e4;
     }
+    h3{
+      color: #99ff99;
+      text-align: center;
+    }
+    h4{
+      text-align: center;
+      color: red;
+    }
   </style>
+
+<body>
+  <h3>&#9834 Starting Speaking &#9834</h3>
+  <div class="words" contenteditable>
+  </div>
+  <h4>Made By Dhrubesh with &#x2661</h4>
+<script>
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  let p = document.createElement('p');
+  const words = document.querySelector('.words');
+  words.appendChild(p);
+  recognition.addEventListener('result', e => {
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('');
+      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+      p.textContent = poopScript;
+      if (e.results[0].isFinal) {
+        p = document.createElement('p');
+        words.appendChild(p);
+      }
+  });
+  recognition.addEventListener('end', recognition.start);
+  recognition.start();
+</script>
+
+
 
 </body>
 </html>
